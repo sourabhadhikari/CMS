@@ -31,13 +31,22 @@
             echo "<td>{$post_id}</td>";
             echo "<td>{$post_title}</td>";
             echo "<td>$post_author</td>";
-            echo "<td>$post_category_id</td>";
+
+            $query = "SELECT * from categories WHERE cat_id=$post_category_id";
+            $select_category_id = mysqli_query($connection,$query);
+            while($row=mysqli_fetch_assoc($select_category_id)){
+                $cat_id=$row['cat_id'];
+                $cat_title=$row['cat_title'];
+                echo "<td>$cat_title</td>";
+            }
+
             echo "<td><img width='100' src='../Images/$post_image' ></td>";
             echo "<td> $post_status</td>";
             echo "<td> $post_tags</td>";
             echo "<td>$post_comment_count</td>";
             echo "<td>$post_date</td>";
-            echo "<td><a href='posts.php?delete=$post_id'>delete</a></td>";
+            echo "<td><a href='posts.php?source&delete=$post_id'>delete</a></td>";
+            echo "<td><a href='posts.php?source=edit_post&edit=$post_id'>edit</a></td>";
             echo "</tr>";
         }
         ?>
@@ -48,6 +57,10 @@
 </table>
 <?php 
     if(isset($_GET['delete'])){
-        echo "elo";
+        $the_post_id = $_GET['delete'];
+        $query="DELETE FROM posts where post_id=$the_post_id";
+        $delete_post_query=mysqli_query($connection,$query);
+        
+        confirmQuery($delete_post_query);
     }
 ?>

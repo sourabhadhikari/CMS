@@ -5,11 +5,15 @@
             <th>Author</th>
             <th>Title</th>
             <th>Category</th>
-            <th>Status</th>
             <th>Image</th>
+            <th>Status</th>
+            
             <th>Tags</th>
             <th>Date</th>
             <th>comments</th>
+            <th>Delete</th>
+            <th>Edit</th>
+
         </tr>
     </thead>
     <tbody>
@@ -43,8 +47,11 @@
             echo "<td><img width='100' src='../Images/$post_image' ></td>";
             echo "<td> $post_status</td>";
             echo "<td> $post_tags</td>";
-            echo "<td>$post_comment_count</td>";
             echo "<td>$post_date</td>";
+            echo "<td>$post_comment_count</td>";
+            
+            
+            
             echo "<td><a href='posts.php?source&delete=$post_id'>delete</a></td>";
             echo "<td><a href='posts.php?source=edit_post&edit=$post_id'>edit</a></td>";
             echo "</tr>";
@@ -62,5 +69,6 @@
         $delete_post_query=mysqli_query($connection,$query);
         
         confirmQuery($delete_post_query);
+        header("Location:posts.php");
     }
 ?>

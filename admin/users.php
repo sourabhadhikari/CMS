@@ -21,17 +21,17 @@
                         if(isset($_GET['source'])){
                             $source=$_GET['source'];
                             switch($source){
-                                case 'add_post': include "includes/add_posts.php";
+                                case 'add_user': include "includes/add_users.php";
                                     break;
-                                case 'edit_post': include "includes/edit_post.php";
+                                case 'edit_user': include "includes/edit_users.php";
                                     break;
                                 default:
-                                    include "includes/view_allPosts.php";
+                                    include "includes/view_allUsers.php";
                                 break;
                             }
                         }
                         else {
-                            include "includes/view_allPosts.php";
+                            include "includes/view_allUsers.php";
                             
                         }
                         

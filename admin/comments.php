@@ -26,12 +26,12 @@
                                 case 'edit_post': include "includes/edit_post.php";
                                     break;
                                 default:
-                                    include "includes/view_allPosts.php";
+                                    include "includes/view_allComments.php";
                                 break;
                             }
                         }
                         else {
-                            include "includes/view_allPosts.php";
+                            include "includes/view_allComments.php";
                             
                         }
                         
